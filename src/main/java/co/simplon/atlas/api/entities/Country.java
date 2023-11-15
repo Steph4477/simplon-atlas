@@ -13,7 +13,6 @@ public class Country {
 	private String language;
 
 	public Country() {
-
 		this.id = null;
 		this.isoCode2 = null;
 		this.isoCode3 = null;
