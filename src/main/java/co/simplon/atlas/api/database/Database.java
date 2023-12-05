@@ -11,14 +11,6 @@ public class Database {
     private static Map<UUID, Capital> capitals = new HashMap<>();
     private static Map<UUID, Continent> continents = new HashMap<>();
 
-    public static Map<UUID, Capital> getCapitals() {
-        return capitals;
-    }
-    
-    public static Map<UUID, Continent> getContinents() {
-        return continents;
-    }
-
     public static void addCapital(Capital capital) {
         capital.setId(UUID.randomUUID());
         capitals.put(capital.getId(), capital);
@@ -29,7 +21,7 @@ public class Database {
         continents.put(continent.getId(), continent);
     }
 
-    public static Capital getCapital(UUID id) {
+   public static Capital getCapital(UUID id) {
         return capitals.get(id);
     }
     
