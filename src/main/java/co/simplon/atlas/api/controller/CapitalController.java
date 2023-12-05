@@ -1,10 +1,9 @@
 package co.simplon.atlas.api.controller;
 import co.simplon.atlas.api.database.Database;
 import co.simplon.atlas.api.entities.Capital;
-
-import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,14 +11,17 @@ import org.springframework.web.bind.annotation.*;
 public class CapitalController {
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void createCapital(@RequestBody Capital capital) {
-        capital.createCapital();
-        System.out.println("Capital ID: " + capital.getId() + ", Name: " + capital.getName());
+        Database.addCapital(capital);
+        System.out.println( " id: " + capital.getId());
+
     }
 
     @GetMapping("/{id}")
-    public Map<UUID, Capital> getCapital() {
-        return Database.getCapitals();
-        
+    @ResponseStatus(HttpStatus.OK)
+    public Capital getCapital(@PathVariable UUID id) {
+       Capital capital = Database.getCapital(id);
+       return capital;
     }
 }
